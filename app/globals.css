@@ -610,6 +610,7 @@ img {
   }
 
   .hero-introduction {
+    grid-area: auto;
     justify-self: center;
     width: min(100%, 34rem);
   }
