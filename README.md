@@ -17,7 +17,7 @@ Visitors can explore the developer introduction, technology marquee, creative ga
 - **About Me and Services:** Scroll-revealed content describing the developer and front-end development service.
 - **Project presentation:** Three client cards with labeled visual placeholders, descriptions, and a View Project element. Project URLs and final project imagery/content have not yet been added; the View Project element is therefore displayed as unavailable until a URL is supplied.
 - **Projects-to-Contact sequence:** A pinned scroll stage coordinates the project-card stacking and the Contact section's entrance.
-- **Contact options:** Email and WhatsApp links include an editable prefilled collaboration message. The WhatsApp number is displayed as `+234 907 688 5001`.
+- **Contact options:** Email and WhatsApp links include an editable prefilled collaboration message. The WhatsApp number is displayed as `+234 8077934455`.
 - **Responsive layouts:** CSS Grid, Flexbox, fluid sizing, and media queries adapt the page to desktop, tablet, and mobile widths.
 - **Motion and accessibility:** Framer Motion and CSS provide entrance, reveal, marquee, logo, and scroll effects. Reduced-motion preferences are respected, including a static project/contact layout.
 - **Footer:** Developer identity and contact links.
@@ -182,6 +182,5 @@ No hosting platform, deployment adapter, static export configuration, or applica
 **Olufolarin Darlington**  
 Front-End Developer
 
-- Email: [darlingtondolapoolufolarin@gmail.com](mailto:darlingtondolapoolufolarin@gmail.com)
-- WhatsApp: [+234 907 688 5001](https://wa.me/2349076885001)
-
+- Email: [explorewithtripled@gmail.com](mailto:explorewithtripled@gmail.com)
+- WhatsApp: [+234 8077934455](https://wa.me/2348077934455)

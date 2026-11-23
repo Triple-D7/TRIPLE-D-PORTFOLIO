@@ -23,6 +23,7 @@ const technologies = [
   { name: 'CSS', icon: '/technology-icons/css.svg' },
   { name: 'Node.js', icon: '/technology-icons/nodejs.svg' },
   { name: 'TypeScript', icon: '/technology-icons/typescript.svg' },
+  { name: 'Python', icon: '/technology-icons/python.svg' },
 ];
 
 export default function Home() {

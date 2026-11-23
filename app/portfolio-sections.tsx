@@ -1,44 +1,69 @@
-import {
-  ArrowUpRight,
-  MessageCircle,
-} from 'lucide-react';
+import { ArrowUpRight, MessageCircle } from 'lucide-react';
+import Image, { type StaticImageData } from 'next/image';
 import type { CSSProperties } from 'react';
 import ProjectContactStage, {
   navigateToContact,
 } from './project-contact-stage';
 import ScrollReveal, { DoubleHeightContent } from './scroll-reveal';
+import detail01A from '../DETAIL 01A.png';
+import detail01B from '../DETAIL 01B.png';
+import detail02A from '../DETAIL 02A.png';
+import detail02B from '../DETAIL 02B.png';
+import detail03A from '../DETAIL 03A.png';
+import detail03B from '../DETAIL 03B.png';
+import overview01 from '../OVERVIEW 01.png';
+import overview02 from '../OVERVIEW 02.png';
+import overview03 from '../OVERVIEW 03.png';
 
 const contactDetails = {
   name: 'Olufolarin Darlington',
-  email: 'darlingtondolapoolufolarin@gmail.com',
-  phone: '+234 907 688 5001',
-  whatsappNumber: '2349076885001',
+  email: 'explorewithtripled@gmail.com',
+  phone: '+234 8077934455',
+  whatsappNumber: '2348077934455',
 };
 
 const contactMessage =
   'I saw your portfolio and I would like us to work on a project together.';
+
+const projectUrls = {
+  'client-01': 'https://www.triple-d.eu.org/',
+  'client-02': 'https://www.triple-d.eu.org/codelab',
+  'client-03': 'https://www.triple-d.eu.org/flicks',
+};
 
 const projects = [
   {
     id: 'client-01',
     number: '01',
     title: 'CLIENT',
-    url: '',
-    images: ['OVERVIEW 01', 'DETAIL 01A', 'DETAIL 01B'],
+    url: projectUrls['client-01'],
+    images: [
+      { label: 'OVERVIEW 01', source: overview01 },
+      { label: 'DETAIL 01A', source: detail01A },
+      { label: 'DETAIL 01B', source: detail01B },
+    ],
   },
   {
     id: 'client-02',
     number: '02',
     title: 'CLIENT',
-    url: '',
-    images: ['OVERVIEW 02', 'DETAIL 02A', 'DETAIL 02B'],
+    url: projectUrls['client-02'],
+    images: [
+      { label: 'OVERVIEW 02', source: overview02 },
+      { label: 'DETAIL 02A', source: detail02A },
+      { label: 'DETAIL 02B', source: detail02B },
+    ],
   },
   {
     id: 'client-03',
     number: '03',
     title: 'CLIENT',
-    url: '',
-    images: ['OVERVIEW 03', 'DETAIL 03A', 'DETAIL 03B'],
+    url: projectUrls['client-03'],
+    images: [
+      { label: 'OVERVIEW 03', source: overview03 },
+      { label: 'DETAIL 03A', source: detail03A },
+      { label: 'DETAIL 03B', source: detail03B },
+    ],
   },
 ];
 
@@ -204,28 +229,62 @@ function ServicesSection() {
   );
 }
 
-function ProjectVisual({ label, variant }: { label: string; variant: string }) {
+function ProjectVisual({
+  label,
+  source,
+  url,
+}: {
+  label: string;
+  source: StaticImageData;
+  url: string;
+}) {
   return (
-    <ScrollReveal
-      as="div"
-      className={`project-visual ${variant}`}
-      role="img"
-      label={`${label} visual placeholder`}
-      offset={['start 100%', 'start 80%']}
-    >
-      <span className="project-visual-frame" aria-hidden="true" />
-      <span className="project-visual-label" aria-hidden="true">{label}</span>
-    </ScrollReveal>
+    <figure className="project-screenshot-item">
+      <ScrollReveal
+        as="div"
+        className="project-visual"
+        offset={['start 100%', 'start 80%']}
+      >
+        <a
+          className="project-visual-link"
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${label} live project in a new tab`}
+        >
+          <Image
+            src={source}
+            alt={`${label} project screenshot`}
+            fill
+            sizes="(max-width: 767px) 90vw, (max-width: 1200px) 45vw, 44vw"
+            unoptimized
+            className="project-screenshot-image"
+          />
+        </a>
+        <a
+          className="project-preview-overlay project-preview-overlay-link"
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${label} live project in a new tab`}
+        >
+          OPEN LIVE PROJECT <ArrowUpRight aria-hidden="true" />
+        </a>
+      </ScrollReveal>
+      <a
+        className="project-link project-screenshot-link"
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View live project for ${label} in a new tab`}
+      >
+        VIEW PROJECT <ArrowUpRight aria-hidden="true" />
+      </a>
+    </figure>
   );
 }
 
 function ProjectCardContent({ project }: { project: (typeof projects)[number] }) {
-  const variants = [
-    'project-visual--primary',
-    'project-visual--secondary',
-    'project-visual--tertiary',
-  ];
-
   return (
     <div className="project-card-content">
       <ScrollReveal
@@ -238,32 +297,24 @@ function ProjectCardContent({ project }: { project: (typeof projects)[number] })
             <span className="project-number">{project.number}</span>
             <h3>{project.title}</h3>
           </div>
-          {project.url ? (
-            <a
-              className="project-link"
-              href={project.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              VIEW PROJECT <ArrowUpRight aria-hidden="true" />
-            </a>
-          ) : (
-            <span
-              className="project-link project-link--unavailable"
-              aria-disabled="true"
-              title="A project URL will be added later"
-            >
-              VIEW PROJECT <ArrowUpRight aria-hidden="true" />
-            </span>
-          )}
+          <a
+            className="project-link"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`View live project for client ${project.number} in a new tab`}
+          >
+            VIEW PROJECT <ArrowUpRight aria-hidden="true" />
+          </a>
         </header>
       </ScrollReveal>
       <div className="project-gallery">
-        {project.images.map((image, imageIndex) => (
+        {project.images.map((image) => (
           <ProjectVisual
-            key={image}
-            label={image}
-            variant={variants[imageIndex]}
+            key={image.label}
+            label={image.label}
+            source={image.source}
+            url={project.url}
           />
         ))}
       </div>
